@@ -1,29 +1,60 @@
 import type { Request, Response } from 'express'
+import * as vehicleService from '../services/vehicles.service.js'
 
-export async function getVehicles(request: Request, response: Response) {
-  console.log(request)
-  response.send('Vehicles list')
+export async function getVehicles(_: Request, response: Response) {
+  const result = await vehicleService.getAllVehicles()
+
+  if (!result.success) {
+    return response.status(result.code).json({ error: result.error })
+  }
+
+  return response.status(200).json(result.data)
 }
 
 export async function getVehicle(request: Request, response: Response) {
   const { id } = request.params
-  console.log(id)
-  response.send('Vehicle details')
+  const result = await vehicleService.getVehicleById(id as string)
+
+  if (!result.success) {
+    return response.status(result.code).json({ error: result.error })
+  }
+
+  return response.status(200).json(result.data)
 }
 
 export async function createVehicle(request: Request, response: Response) {
-  console.log(request)
-  response.send('Vehicle creation')
+  const { userId } = request.params
+  const result = await vehicleService.createVehicle(request.body, userId as string)
+
+  if (!result.success) {
+    return response.status(result.code).json({ error: result.error })
+  }
+
+  return response.status(201).json(result.data)
 }
 
 export async function updateVehicle(request: Request, response: Response) {
-  const { id } = request.params
-  console.log(id)
-  response.send('Vehicle update')
+  const { vehicleId, userId } = request.params
+  const result = await vehicleService.updateVehicle(
+    vehicleId as string,
+    userId as string,
+    request.body
+  )
+
+  if (!result.success) {
+    return response.status(result.code).json({ error: result.error })
+  }
+
+  return response.status(200).json(result.data)
 }
 
 export async function deleteVehicle(request: Request, response: Response) {
   const { id } = request.params
-  console.log(id)
-  response.send('Vehicle deletion')
+  const result = await vehicleService.deleteVehicle(id as string)
+
+  if (!result.success) {
+    return response.status(result.code).json({ error: result.error })
+  }
+
+  return response.status(200).json(result.data)
 }
