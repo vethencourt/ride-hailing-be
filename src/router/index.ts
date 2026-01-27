@@ -1,8 +1,8 @@
 import { Router } from 'express'
 import type { Request, Response } from 'express'
-import authRoutes from './auth.js'
-import vehicleRoutes from './vehicles.js'
-import metaRoutes from './meta.js'
+import authRoutes from './auth.router.js'
+import vehicleRoutes from './vehicles.router.js'
+import metaRoutes from './meta.router.js'
 
 const router: Router = Router()
 

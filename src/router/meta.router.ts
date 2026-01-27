@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getMakes, getModels, getYears } from '../controllers/meta.js'
+import { getMakes, getModels, getYears } from '../controllers/meta.controller.js'
 
 const router: Router = Router()
 

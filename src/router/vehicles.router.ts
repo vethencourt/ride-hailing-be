@@ -5,7 +5,7 @@ import {
   getVehicle,
   getVehicles,
   updateVehicle
-} from '../controllers/vehicles.js'
+} from '../controllers/vehicles.controller.js'
 
 const router: Router = Router()
 
