@@ -17,13 +17,13 @@ export const signup = async (data: IRegisterUser): Promise<ServiceResponse<{}>> 
     if (error.code === 11000)
       return {
         success: false,
-        error: 'Email already exists',
+        error: 'El correo ya existe',
         code: 400
       }
 
     return {
       success: false,
-      error: 'Failed to create account',
+      error: 'No se pudo crear usuario',
       code: 500
     }
   }
@@ -46,7 +46,7 @@ export const login = async (
 
   const token = generateToken({ id, email })
 
-  if (!token) return { success: false, error: 'No se pudo generar el token', code: 500 }
+  if (!token) return { success: false, error: 'No se pudo generar token', code: 500 }
   const user = { id, email, password }
 
   return { success: true, data: { user, token } }
