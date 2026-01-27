@@ -1,4 +1,4 @@
-import type { User } from './auth.types.js'
+import type { IUser } from './auth.types.js'
 
 export interface IVehicle {
   id: string
@@ -7,8 +7,8 @@ export interface IVehicle {
   year: number
   createdAt: Date | string
   updatedAt: Date | string
-  createdBy: User
-  updatedBy: User
+  createdBy: IUser
+  updatedBy: IUser
   status: IVehicleStatus
 }
 

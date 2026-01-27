@@ -1,15 +1,15 @@
-export interface User {
+export interface IUser {
   id: string
   email: string
 }
 
-export interface RegisterUser extends Omit<User, 'id'> {
+export interface IRegisterUser extends Omit<IUser, 'id'> {
   password: string
 }
 
-export type LoginCredentials = Pick<RegisterUser, 'email' | 'password'>
+export type ILoginCredentials = Pick<IRegisterUser, 'email' | 'password'>
 
-export type LoginResponse = {
-  user: User
+export type ILoginResponse = {
+  user: IUser
   token: string
 }
