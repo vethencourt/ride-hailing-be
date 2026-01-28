@@ -1,11 +1,10 @@
 import type { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
-const secret = process.env['JWT_SECRET']
-
 export async function authenticate(request: Request, response: Response, next: NextFunction) {
   const authHeader = request.headers.authorization
   const token = authHeader?.split(' ')[1]
+  const secret = process.env['JWT_SECRET']
 
   if (!token) return response.status(401).json({ message: 'Unauthorized' })
 
