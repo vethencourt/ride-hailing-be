@@ -93,7 +93,7 @@ export const createVehicle = async (
 export const updateVehicle = async (
   id: string,
   userId: string,
-  data: ICreateVehicle
+  data: Partial<ICreateVehicle>
 ): Promise<ServiceResponse<IVehicle>> => {
   try {
     const updatedVehicle = await Vehicle.findByIdAndUpdate(
