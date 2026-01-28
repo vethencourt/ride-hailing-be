@@ -23,7 +23,7 @@ export async function getVehicle(request: Request, response: Response) {
 }
 
 export async function createVehicle(request: Request, response: Response) {
-  const { userId } = request.params
+  const userId = request.user?.id
   const result = await vehicleService.createVehicle(request.body, userId as string)
 
   if (!result.success) {
@@ -34,12 +34,9 @@ export async function createVehicle(request: Request, response: Response) {
 }
 
 export async function updateVehicle(request: Request, response: Response) {
-  const { vehicleId, userId } = request.params
-  const result = await vehicleService.updateVehicle(
-    vehicleId as string,
-    userId as string,
-    request.body
-  )
+  const { id } = request.params
+  const userId = request.user?.id
+  const result = await vehicleService.updateVehicle(id as string, userId, request.body)
 
   if (!result.success) {
     return response.status(result.code).json({ error: result.error })
