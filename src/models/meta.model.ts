@@ -51,6 +51,6 @@ const yearSchema = new Schema<IYear>(
   }
 )
 
-export const MakeModel = model<IMake>('Make', makeSchema)
-export const CarModel = model<IModel>('Model', modelSchema)
-export const YearModel = model<IYear>('Year', yearSchema)
+export const Make = model<IMake>('Make', makeSchema)
+export const Car = model<IModel>('Model', modelSchema)
+export const Year = model<IYear>('Year', yearSchema)
