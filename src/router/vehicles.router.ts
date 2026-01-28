@@ -13,7 +13,7 @@ const router: Router = Router()
 router.post('/', getVehicles)
 router.get('/:id', getVehicle)
 router.post('/create', validateBody(vehicleCreateSchema), createVehicle)
-router.put('/:id/', updateVehicle)
+router.put('/:id/', validateBody(vehicleCreateSchema), updateVehicle)
 router.delete('/:id', deleteVehicle)
 
 export default router
