@@ -1,8 +1,10 @@
 import type { Request, Response } from 'express'
+import type { IVehicleListRequest } from '../types/vehicles.types.js'
 import * as vehiclesService from '../services/vehicles.service.js'
 
-export async function getVehicles(_: Request, response: Response) {
-  const result = await vehiclesService.getAllVehicles()
+export async function getVehicles(request: Request, response: Response) {
+  const listRequest = request.body as IVehicleListRequest
+  const result = await vehiclesService.getAllVehicles(listRequest)
 
   if (!result.success) {
     return response.status(result.code).json({ error: result.error })

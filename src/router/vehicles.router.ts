@@ -9,9 +9,9 @@ import {
 
 const router: Router = Router()
 
-router.get('/', getVehicles)
+router.post('/', getVehicles)
 router.get('/:id', getVehicle)
-router.post('/', createVehicle)
+router.post('/create', createVehicle)
 router.put('/:id/', updateVehicle)
 router.delete('/:id', deleteVehicle)
 
