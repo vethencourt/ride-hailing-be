@@ -29,5 +29,5 @@ export type IVehicleStatus = 'AVAILABLE' | 'MAINTENANCE' | 'SERVICING'
 
 export type ICreateVehicle = Omit<
   IVehicle,
-  'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy' | 'status'
+  'id' | 'createdAt' | 'updatedAt' | 'createdBy' | 'updatedBy'
 >
