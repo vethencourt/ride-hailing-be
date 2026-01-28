@@ -41,13 +41,13 @@ export const login = async (
   if (!userDoc) return noAuthError
 
   const { id, email, password } = userDoc
-  const isMatch = await verifyPassword(credentials.password, userDoc.password)
+  const isMatch = await verifyPassword(credentials.password, password)
   if (!isMatch) return noAuthError
 
   const token = generateToken({ id, email })
 
   if (!token) return { success: false, error: 'No se pudo generar token', code: 500 }
-  const user = { id, email, password }
+  const user = { id, email }
 
   return { success: true, data: { user, token } }
 }

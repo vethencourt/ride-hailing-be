@@ -14,6 +14,6 @@ export interface IRegisterUser extends Omit<IUser, 'id'> {}
 export type ILoginCredentials = Pick<IUser, 'email' | 'password'>
 
 export type ILoginResponse = {
-  user: IUser
+  user: Omit<IUser, 'password'>
   token: string
 }
