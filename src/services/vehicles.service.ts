@@ -12,7 +12,7 @@ export const getAllVehicles = async (
   listRequest?: IVehicleListRequest
 ): Promise<ServiceResponse<IVehicleListResponse>> => {
   try {
-    const pagination = listRequest?.pagination ?? { current: 1, size: 10, total: 0 }
+    const pagination = listRequest?.pagination ?? { page: 1, pageSize: 10 }
     const searchTerm = listRequest?.searchTerm?.trim()
     const sortBy = listRequest?.sortBy
     const sortOrder = listRequest?.sortOrder ? Number(listRequest!.sortOrder) : -1
@@ -21,7 +21,7 @@ export const getAllVehicles = async (
 
     if (searchTerm) {
       const regex = new RegExp(searchTerm, 'i')
-      const or: any[] = [{ make: regex }, { model: regex }]
+      const or: any[] = [{ make: regex }, { model: regex }, { status: regex }]
 
       const num = Number(searchTerm)
       if (!Number.isNaN(num)) or.push({ year: num })
@@ -29,13 +29,13 @@ export const getAllVehicles = async (
       filter.$or = or
     }
 
-    const total = await Vehicle.countDocuments(filter)
-    const page = pagination.current && pagination.current > 0 ? pagination.current : 1
-    const size = pagination.size && pagination.size > 0 ? pagination.size : 10
+    const totalItems = await Vehicle.countDocuments(filter)
+    const { page, pageSize } = pagination
 
     const query = Vehicle.find(filter)
       .populate('createdBy', 'email')
       .populate('updatedBy', 'email')
+      .lean()
 
     const sortObj: any = {}
     if (sortBy) sortObj[String(sortBy)] = sortOrder
@@ -43,12 +43,12 @@ export const getAllVehicles = async (
 
     const vehicles = await query
       .sort(sortObj)
-      .skip((page - 1) * size)
-      .limit(size)
+      .skip((page - 1) * pageSize)
+      .limit(pageSize)
 
     const data: IVehicleListResponse = {
       vehicles,
-      pagination: { current: page, total, size }
+      pagination: { currentPage: page, pageSize, totalItems }
     }
 
     return { success: true, data }
@@ -62,6 +62,7 @@ export const getVehicleById = async (id: string): Promise<ServiceResponse<IVehic
     const vehicle = await Vehicle.findById(id)
       .populate('createdBy', 'email')
       .populate('updatedBy', 'email')
+      .lean()
 
     if (!vehicle) return vehicle404
 

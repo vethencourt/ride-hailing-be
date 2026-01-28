@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Types } from 'mongoose'
 import type { IVehicle } from '../types/vehicles.types.js'
 
 const vehicleSchema = new Schema<IVehicle>(
@@ -12,8 +12,8 @@ const vehicleSchema = new Schema<IVehicle>(
       enum: ['AVAILABLE', 'MAINTENANCE', 'SERVICING'],
       default: 'AVAILABLE'
     },
-    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    updatedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+    createdBy: { type: Types.ObjectId, ref: 'User', required: true },
+    updatedBy: { type: Types.ObjectId, ref: 'User', required: true }
   },
   {
     timestamps: true,
@@ -22,6 +22,7 @@ const vehicleSchema = new Schema<IVehicle>(
       versionKey: false,
       transform: (_: any, ret: any) => {
         delete ret._id
+        return ret
       }
     }
   }

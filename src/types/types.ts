@@ -3,7 +3,11 @@ export type ServiceResponse<T> =
   | { success: false; error: string; code: number }
 
 export interface Pagination {
-  current: number
-  total: number
-  size: number
+  currentPage: number
+  pageSize: number
+  totalItems: number
+}
+
+export interface PaginationRequest extends Omit<Pagination, 'currentPage' | 'totalItems'> {
+  page: number
 }

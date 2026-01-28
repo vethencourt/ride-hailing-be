@@ -1,5 +1,4 @@
-import type { IUser } from './auth.types.js'
-import type { Pagination } from './types.js'
+import type { Pagination, PaginationRequest } from './types.js'
 
 export interface IVehicle {
   id: string
@@ -8,13 +7,13 @@ export interface IVehicle {
   year: number
   createdAt: Date | string
   updatedAt: Date | string
-  createdBy: IUser
-  updatedBy: IUser
+  createdBy: { email: string }
+  updatedBy: { email: string }
   status: IVehicleStatus
 }
 
 export interface IVehicleListRequest {
-  pagination: Pagination
+  pagination: PaginationRequest
   searchTerm?: string
   sortBy?: keyof IVehicle
   sortOrder?: '1' | '-1'
