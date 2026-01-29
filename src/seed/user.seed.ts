@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import { users } from './users.js'
+import { users } from './constants/users.js'
 import { User } from '../models/user.model.js'
 
 export const seedUsers = async () => {

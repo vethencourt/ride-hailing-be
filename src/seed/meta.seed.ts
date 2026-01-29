@@ -1,8 +1,8 @@
 import { Types } from 'mongoose'
 
-import { makes } from './makes.js'
-import { models } from './models.js'
-import { years } from './years.js'
+import { makes } from './constants/makes.js'
+import { models } from './constants/models.js'
+import { years } from './constants/years.js'
 
 import { Make, Car, Year } from '../models/meta.model.js'
 
