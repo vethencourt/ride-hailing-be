@@ -1,4 +1,4 @@
-import type { IRegisterUser } from '../types/auth.types.js'
+import type { IRegisterUser } from '../../types/auth.types.js'
 
 export const users: IRegisterUser[] = [
   {

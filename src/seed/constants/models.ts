@@ -1,4 +1,4 @@
-import type { IModel } from '../types/meta.types.js'
+import type { IModel } from '../../types/meta.types.js'
 
 export const models: IModel[] = [
   // Toyota

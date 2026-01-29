@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express'
 import { object, string, number, ObjectSchema, Schema } from 'yup'
 import type { IVehicleStatus } from '../types/vehicles.types.js'
 
-const VEHICLE_STATUS: IVehicleStatus[] = ['AVAILABLE', 'MAINTENANCE', 'SERVICING']
+const VEHICLE_STATUS: IVehicleStatus[] = ['DISPONIBLE', 'MANTENIMIENTO', 'SERVICIO']
 
 export const vehicleCreateSchema = object({
   make: string().trim().required('Make is required'),

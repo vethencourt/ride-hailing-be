@@ -24,7 +24,7 @@ export interface IVehicleListResponse {
   pagination: Pagination
 }
 
-export type IVehicleStatus = 'AVAILABLE' | 'MAINTENANCE' | 'SERVICING'
+export type IVehicleStatus = 'DISPONIBLE' | 'MANTENIMIENTO' | 'SERVICIO'
 
 export type ICreateVehicle = Omit<
   IVehicle,

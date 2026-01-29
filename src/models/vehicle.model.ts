@@ -9,8 +9,8 @@ const vehicleSchema = new Schema<IVehicle>(
     status: {
       type: String,
       required: true,
-      enum: ['AVAILABLE', 'MAINTENANCE', 'SERVICING'],
-      default: 'AVAILABLE'
+      enum: ['DISPONIBLE', 'MANTENIMIENTO', 'SERVICIO'],
+      default: 'DISPONIBLE'
     },
     createdBy: { type: Types.ObjectId, ref: 'User', required: true },
     updatedBy: { type: Types.ObjectId, ref: 'User', required: true }
