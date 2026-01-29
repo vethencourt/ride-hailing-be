@@ -35,7 +35,6 @@ export const getAllVehicles = async (
     const query = Vehicle.find(filter)
       .populate('createdBy', 'email')
       .populate('updatedBy', 'email')
-      .lean()
 
     const sortObj: any = {}
     if (sortBy) sortObj[String(sortBy)] = sortOrder
@@ -62,7 +61,6 @@ export const getVehicleById = async (id: string): Promise<ServiceResponse<IVehic
     const vehicle = await Vehicle.findById(id)
       .populate('createdBy', 'email')
       .populate('updatedBy', 'email')
-      .lean()
 
     if (!vehicle) return vehicle404
 

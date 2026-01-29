@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from 'express'
-import { object, string, number, Schema } from 'yup'
+import { object, string, number, ObjectSchema, Schema } from 'yup'
 import type { IVehicleStatus } from '../types/vehicles.types.js'
 
 const VEHICLE_STATUS: IVehicleStatus[] = ['AVAILABLE', 'MAINTENANCE', 'SERVICING']
@@ -11,7 +11,13 @@ export const vehicleCreateSchema = object({
   status: string()
     .required('Status is required')
     .oneOf(Array.from(VEHICLE_STATUS), `Status must be one of: ${VEHICLE_STATUS.join(', ')}`)
-}) as Schema<Record<string, any>>
+})
+
+export const vehicleUpdateSchema = (vehicleCreateSchema as ObjectSchema<any>).shape({
+  make: string().trim().optional(),
+  model: string().trim().optional(),
+  year: number().optional().typeError('Year must be a number')
+})
 
 export const authSignupSchema = object({
   email: string().trim().required('Email is required').email('Email must be valid'),
