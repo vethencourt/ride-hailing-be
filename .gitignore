@@ -8,8 +8,9 @@ dist/
 
 # Env vars
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+*.local
 
 # Logs
 npm-debug.log*

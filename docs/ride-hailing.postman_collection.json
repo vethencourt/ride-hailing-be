@@ -1,0 +1,316 @@
+{
+  "info": {
+    "_postman_id": "1ad2b545-9b9b-42cf-99b7-23b2608294da",
+    "name": "ride-hailing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "2950960"
+  },
+  "item": [
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"boss@ridehailing.com\",\r\n    \"password\": \"securePassword123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "signup",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"ric@test.com\",\r\n    \"password\": \"thisIsPassword.123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/auth/signup",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "auth",
+            "signup"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getVehicles",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EzNzAyY2VjZmE1NDg0NjIyYjM3OSIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2MTg0NDQsImV4cCI6MTc2OTY0NzI0NH0.tgYVtQMXZ_kdVEySVVxKtpCdIjEao7UYKyUPCWauyfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"pagination\": {\r\n        \"page\": 1,\r\n        \"pageSize\": 10\r\n    },\r\n    \"searchTerm\": \"available\"\r\n    // \"sortBy\": \"make\",\r\n    // \"sortOrder\": -1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/vehicles/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "vehicles",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getVehicle",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EzNzAyY2VjZmE1NDg0NjIyYjM3OSIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2MTg0NDQsImV4cCI6MTc2OTY0NzI0NH0.tgYVtQMXZ_kdVEySVVxKtpCdIjEao7UYKyUPCWauyfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/vehicles/697a4e52bc40de22ebd09bbc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "vehicles",
+            "697a4e52bc40de22ebd09bbc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "createVehicle",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EzNzAyY2VjZmE1NDg0NjIyYjM3OSIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2MTg0NDQsImV4cCI6MTc2OTY0NzI0NH0.tgYVtQMXZ_kdVEySVVxKtpCdIjEao7UYKyUPCWauyfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"make\": \"Fiat\",\r\n    \"model\": \"Palio\",\r\n    \"year\": \"2015\",\r\n    \"status\": \"AVAILABLE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/vehicles/create",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "vehicles",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateVehicle",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2EzNzAyY2VjZmE1NDg0NjIyYjM3OSIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2MTg0NDQsImV4cCI6MTc2OTY0NzI0NH0.tgYVtQMXZ_kdVEySVVxKtpCdIjEao7UYKyUPCWauyfg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"make\": \"Fiat\",\r\n    \"model\": \"Palio\",\r\n    \"year\": \"2015\",\r\n    \"status\": \"MAINTENANCE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/vehicles/697a4e52bc40de22ebd09bbc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "vehicles",
+            "697a4e52bc40de22ebd09bbc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getMakes",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2FjM2FjNzcxY2E0OTg2ZDdhNjJlZiIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2NTY3MjcsImV4cCI6MTc2OTY4NTUyN30.veFcs6YfzVsllcljUjJu167174pabrNPHIbBfdQLk9E",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/meta/makes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "meta",
+            "makes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getModels",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5N2FjM2FjNzcxY2E0OTg2ZDdhNjJlZiIsImVtYWlsIjoiYm9zc0ByaWRlaGFpbGluZy5jb20iLCJpYXQiOjE3Njk2NTY3MjcsImV4cCI6MTc2OTY4NTUyN30.veFcs6YfzVsllcljUjJu167174pabrNPHIbBfdQLk9E",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/meta/models/697ac3ac771ca4986d7a62f7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "meta",
+            "models",
+            "697ac3ac771ca4986d7a62f7"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getYears",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/meta/years/697ac3ac771ca4986d7a6316",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "meta",
+            "years",
+            "697ac3ac771ca4986d7a6316"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
