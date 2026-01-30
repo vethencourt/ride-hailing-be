@@ -6,7 +6,7 @@ import { seedVehicles } from './vehicle.seed.js'
 
 dotenv.config()
 
-const runSeeder = async () => {
+export const runSeeder = async () => {
   try {
     const mongoUri = process.env['MONGODB_URI'] as string
     console.log('Starting Database Seeder...')
