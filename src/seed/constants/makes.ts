@@ -1,4 +1,4 @@
-import type { IMake } from '../types/meta.types.js'
+import type { IMake } from '../../types/meta.types.js'
 
 export const makes: IMake[] = [
   { id: 'mk-1', name: 'Toyota' },

@@ -22,6 +22,7 @@
     // Type Checking
     "strict": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 

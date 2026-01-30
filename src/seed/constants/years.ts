@@ -1,4 +1,4 @@
-import type { IYear } from '../types/meta.types.js'
+import type { IYear } from '../../types/meta.types.js'
 
 export const years: IYear[] = [
   // Toyota (md-1 to md-10) - High resale and consistent imports
