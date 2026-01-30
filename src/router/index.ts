@@ -6,7 +6,6 @@ import { authenticate } from '../middleware/auth.middleware.js'
 
 const router: Router = Router()
 
-router.get('/', (_, response) => response.send('API is running...')) // health check
 router.use('/auth', authRoutes)
 router.use('/meta', metaRoutes)
 router.use('/vehicles', authenticate, vehicleRoutes)
